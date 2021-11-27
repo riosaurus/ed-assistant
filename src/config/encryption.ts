@@ -44,11 +44,22 @@ function _secretKey(showAlert = true): string {
 
 export let SECRET_KEY = _secretKey();
 
+function _algorithm(): string {
+    return workspace
+        .getConfiguration("ed-assistant.encryption")
+        .get<string>("algorithm", "aes-128-cbc");
+}
+
+export let ENCRYPTION_ALGORITHM = _algorithm();
+
 export const disposable = workspace.onDidChangeConfiguration(function (event) {
     if (event.affectsConfiguration("ed-assistant.encryption.initializationVector")) {
         INITIALIZATION_VECTOR = _initializationVector();
     }
     if (event.affectsConfiguration("ed-assistant.encryption.secretKey")) {
         SECRET_KEY = _secretKey();
+    }
+    if (event.affectsConfiguration("ed-assistant.encryption.algorithm")) {
+        ENCRYPTION_ALGORITHM = _algorithm();
     }
 });
