@@ -10,10 +10,18 @@
 	"categories": [
 		"Other"
 	],
-	"activationEvents": ["*"],
+	"activationEvents": [
+		"onCommand:ed-assistant.openSettings"
+	],
 	"main": "./dist/extension.js",
 	"contributes": {
-		"commands": [],
+		"commands": [
+			{
+				"command": "ed-assistant.openSettings",
+				"title": "Open ED Assistant settings",
+				"category": "EDA"
+			}
+		],
 		"configuration": [
 			{
 				"title": "ED Assistant",
