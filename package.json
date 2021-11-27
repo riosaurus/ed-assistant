@@ -21,7 +21,12 @@
 					"ed-assistant.encryption.initializationVector": {
 						"type": "string",
 						"default": "",
-						"description": "Initialization Vector used to initialize cipher"
+						"description": "Initialization Vector to initialize cipher"
+					},
+					"ed-assistant.encryption.secretKey": {
+						"type": "string",
+						"default": "",
+						"description": "Secret key for encryption"
 					}
 				}
 			}
