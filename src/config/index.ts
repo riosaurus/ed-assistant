@@ -4,3 +4,5 @@ export {
     ENCRYPTION_ALGORITHM,
     disposable as encryptionConfigChangeListenerDisposable,
 } from './encryption';
+
+export * as Schemes from './schemas';

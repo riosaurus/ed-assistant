@@ -1,0 +1,1 @@
+export { default as EncryptedTextDocumentProvider } from './encrypted-text-provider';
