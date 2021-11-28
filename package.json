@@ -11,11 +11,17 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onCommand:ed-assistant.encryptText",
 		"onCommand:ed-assistant.openSettings"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
+			{
+				"command": "ed-assistant.encryptText",
+				"title": "Encrypt the text using the saved cipher settings",
+				"category": "EDA"
+			},
 			{
 				"command": "ed-assistant.openSettings",
 				"title": "Open ED Assistant settings",
