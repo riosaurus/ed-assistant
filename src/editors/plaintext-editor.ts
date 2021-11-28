@@ -1,4 +1,4 @@
-import { Position, Selection, TextEditor, Uri, ViewColumn, window, workspace } from "vscode";
+import { TextEditor, Uri, ViewColumn, window, workspace } from "vscode";
 
 async function openPlainTextEditor(uri: Uri): Promise<TextEditor | undefined> {
     try {

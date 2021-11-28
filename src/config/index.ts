@@ -5,4 +5,4 @@ export {
     disposable as encryptionConfigChangeListenerDisposable,
 } from './encryption';
 
-export * as Schemes from './schemas';
+export * as Schemes from './schemes';

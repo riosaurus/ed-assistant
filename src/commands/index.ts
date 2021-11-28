@@ -7,3 +7,8 @@ export {
     default as cmdEncryptText,
     command as encryptTextCommand,
 } from './encrypt-text';
+
+export {
+    default as cmdDecryptText,
+    command as decryptTextCommand,
+} from './decrypt-text';

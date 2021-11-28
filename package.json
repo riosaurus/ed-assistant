@@ -4,6 +4,10 @@
 	"description": "Encryption-Decryption tool for Collections-App developers on VSCode IDE",
 	"version": "0.0.1",
 	"publisher": "minzie7",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/riosaurus/ed-assistant.git"
+	},
 	"engines": {
 		"vscode": "^1.62.0"
 	},
@@ -12,6 +16,7 @@
 	],
 	"activationEvents": [
 		"onCommand:ed-assistant.encryptText",
+		"onCommand:ed-assistant.decryptText",
 		"onCommand:ed-assistant.openSettings"
 	],
 	"main": "./dist/extension.js",
@@ -19,7 +24,12 @@
 		"commands": [
 			{
 				"command": "ed-assistant.encryptText",
-				"title": "Encrypt the text using the saved cipher settings",
+				"title": "Encrypt the JSON object using the saved cipher settings",
+				"category": "EDA"
+			},
+			{
+				"command": "ed-assistant.decryptText",
+				"title": "Decrypt the text to formatted JSON using the saved cipher settings",
 				"category": "EDA"
 			},
 			{

@@ -1,7 +1,7 @@
 import { ExtensionContext, workspace } from 'vscode';
-import { cmdEncryptText, cmdOpenExtensionSettings } from './commands';
+import { cmdDecryptText, cmdEncryptText, cmdOpenExtensionSettings } from './commands';
 import { encryptionConfigChangeListenerDisposable, Schemes } from './config';
-import { EncryptedTextDocumentProvider } from './providers';
+import { DecryptedJSONDocumentProvider, EncryptedTextDocumentProvider } from './providers';
 
 export function activate(context: ExtensionContext) {
 
@@ -10,10 +10,17 @@ export function activate(context: ExtensionContext) {
         new EncryptedTextDocumentProvider()
     );
 
+    const decryptedDocProviderDisposable = workspace.registerTextDocumentContentProvider(
+        Schemes.URI_DECRYPTION_SCHEME,
+        new DecryptedJSONDocumentProvider()
+    );
+
     context.subscriptions.push(
         cmdOpenExtensionSettings,
         cmdEncryptText,
+        cmdDecryptText,
         encryptedDocProviderDisposable,
+        decryptedDocProviderDisposable,
         encryptionConfigChangeListenerDisposable,
     );
 }
