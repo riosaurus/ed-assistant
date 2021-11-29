@@ -6,10 +6,16 @@ import { openPlainTextEditor } from "../editors";
 
 export const command = "ed-assistant.decryptText";
 
-export default commands.registerCommand(command, async function() {
+export default commands.registerCommand(command, async function () {
 
     const text = await window.showInputBox({
         title: "Text to decrypt",
+        prompt: `Valid ciphertext will be ${ENCRYPTION_ALGORITHM} decypted`,
+        validateInput(value) {
+            if (!value) {
+                return "Empty input can't be decrypted";
+            }
+        }
     });
 
     if (!text) {

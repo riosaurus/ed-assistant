@@ -1,9 +1,4 @@
-# Change Log
+## 0.0.1 (2021.11.29)
 
-All notable changes to the "ed-assistant" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+- **New**: Encrypt JSON and output to readonly plaintext editor.
+- **New**: Decrypt ciphertext and output to readonly JSON editor.

@@ -10,6 +10,17 @@ export default commands.registerCommand(command, async function() {
 
     const text = await window.showInputBox({
         title: "Text to encrypt",
+        prompt: `Valid JSON will be ${ENCRYPTION_ALGORITHM} encypted`,
+        validateInput(value) {
+            try {
+                if (!value) {
+                    return "Empty input can't be encrypted";
+                }
+                JSON.parse(value);
+            } catch (error: any) {
+                return `Invalid JSON: ${error.message}`;
+            }
+        }
     });
 
     if (!text) {
