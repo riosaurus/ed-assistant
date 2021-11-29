@@ -9,7 +9,7 @@ async function openPlainTextEditor(uri: Uri): Promise<TextEditor | undefined> {
         });
         return textEditor;
     } catch (error: any) {
-        window.showErrorMessage(`Couldn't open the editor. Reason: ${error.message}`);
+        window.showErrorMessage(`Couldn't open the editor: ${error.message}`);
         return;
     }
 }
