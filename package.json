@@ -2,11 +2,15 @@
 	"name": "ed-assistant",
 	"displayName": "ED Assistant",
 	"description": "Encryption-Decryption tool for Collections-App developers on VSCode IDE",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "minzie7",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/riosaurus/ed-assistant.git"
+	},
+	"bugs": {
+		"email": "riopinto487@gmail.com",
+		"url": "https://github.com/riosaurus/ed-assistant/issues"
 	},
 	"engines": {
 		"vscode": "^1.62.0"

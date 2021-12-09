@@ -10,6 +10,23 @@ JSON objects encryption & decryption tool to the rescue of *Collections-App* dev
 
 ## Usage
 
-1. Use the **Command Palette** by pressing `Ctrl+Shift+P` or `F1`.
-2. Search **EDA** and choose the command as per the task.
-3. Make sure to set the default values in *Extension Settings*.
+### Setup variables for the algorithm
+
+1. Go to extension settings.
+2. Set values for *Initialization Vector* and *Secret Key* before heading to other extension commands.
+
+![Encrypt Text Demo](media/command-open-settings.gif)
+
+### Encrypting JSON
+
+1. Open up the *Command Palette*.
+2. Locate the command by searching for the extension name.
+3. Put the input in the input box and hit *Enter*.
+
+![Encrypt Text Demo](media/command-encrypt-text.gif)
+
+### Decrypting Text
+
+- Same steps as of *Encrypt JSON* command.
+
+![alt](media/command-decrypt-text.gif)
