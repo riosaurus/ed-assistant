@@ -2,11 +2,15 @@
 	"name": "ed-assistant",
 	"displayName": "ED Assistant",
 	"description": "Encryption-Decryption tool for Collections-App developers on VSCode IDE",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "minzie7",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/riosaurus/ed-assistant.git"
+	},
+	"bugs": {
+		"email": "riopinto487@gmail.com",
+		"url": "https://github.com/riosaurus/ed-assistant/issues"
 	},
 	"engines": {
 		"vscode": "^1.62.0"
@@ -54,9 +58,17 @@
 					},
 					"ed-assistant.encryption.algorithm": {
 						"type": "string",
-						"enum": ["aes-128-cbc", "aes-128-ecb"],
+						"enum": [
+							"aes-128-cbc",
+							"aes-128-ecb"
+						],
 						"default": "aes-128-cbc",
 						"description": "Encryption algorithm to use."
+					},
+					"ed-assistant.output.openToTheSide": {
+						"type": "boolean",
+						"default": false,
+						"description": "If set to true, output will be opened in a read-only editor to the side of the active window."
 					}
 				}
 			}
@@ -88,5 +100,6 @@
 		"webpack": "^5.52.1",
 		"webpack-cli": "^4.8.0",
 		"@vscode/test-electron": "^1.6.2"
-	}
+	},
+	"dependencies": {}
 }
