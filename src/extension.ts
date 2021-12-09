@@ -1,6 +1,6 @@
 import { ExtensionContext, workspace } from 'vscode';
 import { cmdDecryptText, cmdEncryptText, cmdOpenExtensionSettings } from './commands';
-import { encryptionConfigChangeListenerDisposable, Schemes } from './config';
+import { Schemes } from './config';
 import { DecryptedJSONDocumentProvider, EncryptedTextDocumentProvider } from './providers';
 
 export function activate(context: ExtensionContext) {
@@ -21,7 +21,6 @@ export function activate(context: ExtensionContext) {
         cmdDecryptText,
         encryptedDocProviderDisposable,
         decryptedDocProviderDisposable,
-        encryptionConfigChangeListenerDisposable,
     );
 }
 
