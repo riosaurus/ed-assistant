@@ -1,3 +1,7 @@
+## 0.0.3 (2021.12.14)
+
+- **Enhancement**: Alert will be shown on extension activation if algorithm values aren't set.
+
 ## 0.0.2 (2021.12.09)
 
 - **Update**: Choice to open editor beside active editor or as a full column editor.
