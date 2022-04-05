@@ -69,6 +69,11 @@
 						"type": "boolean",
 						"default": false,
 						"description": "If set to true, output will be opened in a read-only editor to the side of the active window."
+					},
+					"ed-assistant.output.copyToClipboard": {
+						"type": "boolean",
+						"default": "If set to true, output will be opened in a read-only editor to the side of the active window.",
+						"description": "Automatically copy the output contents to clipboard"
 					}
 				}
 			}
@@ -101,5 +106,7 @@
 		"webpack-cli": "^4.8.0",
 		"@vscode/test-electron": "^1.6.2"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"clipboardy": "^3.0.0"
+	}
 }
