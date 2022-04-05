@@ -1,3 +1,7 @@
+## 0.0.4 (2022.04.05)
+
+- **New**: A setting flag to automatically copy output to clipboard.
+
 ## 0.0.3 (2021.12.14)
 
 - **Enhancement**: Alert will be shown on extension activation if algorithm values aren't set.
