@@ -1,9 +1,10 @@
 import { ConfigurationTarget, workspace, WorkspaceConfiguration } from "vscode";
 
-type OutputConfigurationKeys = "openToTheSide";
+type OutputConfigurationKeys = "openToTheSide" | "copyToClipboard";
 
 type OutputConfigurationType<T extends OutputConfigurationKeys> =
-    T extends "openToTheSide" ? boolean : undefined;
+    T extends "openToTheSide" ? boolean :
+    T extends "copyToClipboard" ? boolean : undefined;
 
 interface OutputConfiguration extends WorkspaceConfiguration {
     get<T extends OutputConfigurationKeys>(section: T): OutputConfigurationType<T>;
