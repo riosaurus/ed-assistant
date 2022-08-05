@@ -22,8 +22,11 @@ JSON objects encryption & decryption tool to the rescue of *Collections-App* dev
 1. Open up the *Command Palette*.
 2. Locate the command by searching for the extension name.
 3. Put the input in the input box and hit *Enter*.
-
-![Encrypt Text Demo](media/command-encrypt-text.gif)
+    ![Encrypt Text Demo](media/command-encrypt-text.gif)
+4. Or open any JSON document (saved or unsaved) and use the context menus as shown below.
+![Editor Selection Context Menu](media/v0.0.4_editor_selection_menu.png)
+![Editor Title Context Menu](media/v0.0.4_title_context_menu.png)
+![Editor Title Menu](media/v0.0.4_title_menu.png)
 
 ### Decrypting Text
 
