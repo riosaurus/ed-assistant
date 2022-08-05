@@ -4,29 +4,14 @@ import { getEncryptionConfiguration, getOutputConfiguration, Schemes } from "../
 import { openPlainTextEditor } from "../editors";
 import { encrypt } from "../functions/crypto";
 
-export const command = "ed-assistant.encryptText";
+export const command = "ed-assistant.encryptDocument";
 
 export default commands.registerCommand(command, async () => {
     const algorithm = getEncryptionConfiguration().get('algorithm');
     const parcelAsRequestObject = getOutputConfiguration().get('parcelAsRequestObject');
-    const text = await window.showInputBox({
-        title: "Text to encrypt",
-        prompt: `Valid JSON will be ${algorithm} encypted`,
-        placeHolder: 'Type / paste JSON',
-        validateInput(value) {
-            try {
-                if (!value) {
-                    return "Empty input can't be encrypted";
-                }
-                JSON.parse(value);
-            } catch (error: any) {
-                return `Invalid JSON: ${error.message}`;
-            }
-        }
-    });
-
-    if (text) {
-        const cipher = encrypt(text);
+    const documentData = window.activeTextEditor?.document.getText();
+    if (documentData) {
+        const cipher = encrypt(documentData);
         const data = parcelAsRequestObject ?
             JSON.stringify({ request: cipher }, null, 2)
             : cipher;

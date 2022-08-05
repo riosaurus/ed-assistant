@@ -19,6 +19,7 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onLanguage:json",
 		"onCommand:ed-assistant.encryptText",
 		"onCommand:ed-assistant.decryptText",
 		"onCommand:ed-assistant.openSettings"
@@ -28,12 +29,22 @@
 		"commands": [
 			{
 				"command": "ed-assistant.encryptText",
-				"title": "Encrypt the JSON object using the saved cipher settings",
+				"title": "Encrypt Text",
+				"category": "EDA"
+			},
+			{
+				"command": "ed-assistant.encryptDocument",
+				"title": "Encrypt Document",
+				"category": "EDA"
+			},
+			{
+				"command": "ed-assistant.encryptSelection",
+				"title": "Encrypt Selection",
 				"category": "EDA"
 			},
 			{
 				"command": "ed-assistant.decryptText",
-				"title": "Decrypt the text to formatted JSON using the saved cipher settings",
+				"title": "Decrypt",
 				"category": "EDA"
 			},
 			{
@@ -42,6 +53,29 @@
 				"category": "EDA"
 			}
 		],
+		"menus": {
+			"editor/title": [
+				{
+					"command": "ed-assistant.encryptDocument",
+					"when": "resourceLangId == json",
+					"group": "1_modification"
+				}
+			],
+			"editor/title/context": [
+				{
+					"command": "ed-assistant.encryptDocument",
+					"when": "resourceLangId == json",
+					"group": "1_modification"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "ed-assistant.encryptSelection",
+					"when": "resourceLangId == json && editorHasSelection",
+					"group": "1_modification"
+				}
+			]
+		},
 		"configuration": [
 			{
 				"title": "ED Assistant",
@@ -66,6 +100,11 @@
 						"description": "Encryption algorithm to use."
 					},
 					"ed-assistant.output.openToTheSide": {
+						"type": "boolean",
+						"default": false,
+						"description": "If set to true, output will be opened in a read-only editor to the side of the active window."
+					},
+					"ed-assistant.output.parcelAsRequestObject": {
 						"type": "boolean",
 						"default": false,
 						"description": "If set to true, output will be opened in a read-only editor to the side of the active window."

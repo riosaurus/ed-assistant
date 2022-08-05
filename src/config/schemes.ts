@@ -1,2 +1,1 @@
-export const URI_ENCRYPTION_SCHEME = "ed-assistant-encrypt";
-export const URI_DECRYPTION_SCHEME = "ed-assistant-decrypt";
+export const URI_CRYPTO_SCHEME = "ed-assistant-crypto";
