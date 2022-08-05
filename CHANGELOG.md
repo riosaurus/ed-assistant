@@ -1,9 +1,9 @@
 ## 0.0.6 (2022.08.05)
 
 - **Feature**: JSON Editors will now have a context menu.
-- ![Editor Selection Context Menu](media/v0.0.4_editor_selection_menu.png)
-- ![Editor Title Context Menu](media/v0.0.4_title_context_menu.png)
-- ![Editor Title Menu](media/v0.0.4_title_menu.png)
+- ![Editor Selection Context Menu](media/v0.0.6_editor_selection_menu.png)
+- ![Editor Title Context Menu](media/v0.0.6_title_context_menu.png)
+- ![Editor Title Menu](media/v0.0.6_title_menu.png)
 
 ## 0.0.3 (2021.12.14)
 
