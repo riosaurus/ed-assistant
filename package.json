@@ -2,7 +2,7 @@
 	"name": "ed-assistant",
 	"displayName": "ED Assistant",
 	"description": "Encryption-Decryption tool for Collections-App developers on VSCode IDE",
-	"version": "0.0.3",
+	"version": "0.0.6",
 	"publisher": "minzie7",
 	"repository": {
 		"type": "git",
