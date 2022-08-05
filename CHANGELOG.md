@@ -1,4 +1,4 @@
-## 0.0.4 (2022.08.05)
+## 0.0.6 (2022.08.05)
 
 - **Feature**: JSON Editors will now have a context menu.
 - ![Editor Selection Context Menu](media/v0.0.4_editor_selection_menu.png)
