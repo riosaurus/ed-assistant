@@ -1,13 +1,27 @@
 import { commands, ExtensionContext, window, workspace } from 'vscode';
-import { cmdDecryptText, cmdEncryptText, cmdOpenExtensionSettings } from './commands';
+import { cmdDecryptText, cmdEncryptDocument, cmdEncryptSelection, cmdEncryptText, cmdOpenExtensionSettings } from './commands';
 import { getEncryptionConfiguration, Schemes } from './config';
-import { DecryptedJSONDocumentProvider, EncryptedTextDocumentProvider } from './providers';
+import { EditorProvider } from './providers';
 
 export async function activate(context: ExtensionContext) {
 
     const encryptionConfig = getEncryptionConfiguration();
     const isInitializationVectorSet = !!encryptionConfig.get('initializationVector');
     const isSecretKeySet = !!encryptionConfig.get('secretKey');
+
+     const editorProviderDisposable = workspace.registerTextDocumentContentProvider(
+        Schemes.URI_CRYPTO_SCHEME,
+        new EditorProvider(),
+    );
+
+    context.subscriptions.push(
+        cmdOpenExtensionSettings,
+        cmdEncryptText,
+        cmdEncryptDocument,
+        cmdEncryptSelection,
+        cmdDecryptText,
+        editorProviderDisposable,
+    );
 
     if (!isInitializationVectorSet || !isSecretKeySet) {
         const choice = await window.showWarningMessage(
@@ -16,28 +30,11 @@ export async function activate(context: ExtensionContext) {
         );
         if (choice === "Open") {
             await commands.executeCommand("ed-assistant.openSettings");
-        } else {
-            deactivate();
+        }
+        while (context.subscriptions.length) {
+            context.subscriptions.pop();
         }
     }
-
-    const encryptedDocProviderDisposable = workspace.registerTextDocumentContentProvider(
-        Schemes.URI_ENCRYPTION_SCHEME,
-        new EncryptedTextDocumentProvider()
-    );
-
-    const decryptedDocProviderDisposable = workspace.registerTextDocumentContentProvider(
-        Schemes.URI_DECRYPTION_SCHEME,
-        new DecryptedJSONDocumentProvider()
-    );
-
-    context.subscriptions.push(
-        cmdOpenExtensionSettings,
-        cmdEncryptText,
-        cmdDecryptText,
-        encryptedDocProviderDisposable,
-        decryptedDocProviderDisposable,
-    );
 }
 
 export function deactivate() {}

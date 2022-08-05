@@ -1,9 +1,10 @@
 import { ConfigurationTarget, workspace, WorkspaceConfiguration } from "vscode";
 
-type OutputConfigurationKeys = "openToTheSide";
+type OutputConfigurationKeys = "openToTheSide" | "parcelAsRequestObject";
 
 type OutputConfigurationType<T extends OutputConfigurationKeys> =
-    T extends "openToTheSide" ? boolean : undefined;
+    | T extends "openToTheSide" ? boolean : undefined
+    | T extends "parcelAsRequestObject" ? boolean : undefined;
 
 interface OutputConfiguration extends WorkspaceConfiguration {
     get<T extends OutputConfigurationKeys>(section: T): OutputConfigurationType<T>;

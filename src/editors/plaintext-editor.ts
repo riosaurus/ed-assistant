@@ -6,7 +6,7 @@ async function openPlainTextEditor(uri: Uri): Promise<TextEditor | undefined> {
         const openToTheSide = getOutputConfiguration().get("openToTheSide");
         const textDocument = await workspace.openTextDocument(uri);
         const textEditor = await window.showTextDocument(textDocument, {
-            preview: false,
+            preview: true,
             viewColumn: openToTheSide ? ViewColumn.Beside : undefined,
         });
         return textEditor;
