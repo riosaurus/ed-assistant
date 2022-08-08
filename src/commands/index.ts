@@ -1,9 +1,4 @@
 export {
-    default as cmdOpenExtensionSettings,
-    command as openExtensionSettingsCommand,
-} from './open-extension-settings';
-
-export {
     default as cmdEncryptDocument,
     command as encryptDocumentCommand,
 } from './encrypt-document';

@@ -1,7 +1,8 @@
 import { commands, ExtensionContext, window, workspace } from 'vscode';
-import { cmdEncryptDocument, cmdEncryptSelection, cmdOpenExtensionSettings } from './commands';
+import { cmdEncryptDocument, cmdEncryptSelection } from './commands';
 import decryptText, { commandDecryptText } from './commands/decrypt-text';
 import encryptText, { commandEncryptText } from './commands/encrypt-text';
+import openExtensionSettings, { commandOpenExtensionSettings } from './commands/open-extension-settings';
 import { getEncryptionConfiguration, Schemes } from './config';
 import { EditorProvider } from './providers';
 
@@ -10,6 +11,7 @@ export async function activate(context: ExtensionContext) {
     const encryptionConfig = getEncryptionConfiguration();
 
     if (encryptionConfig.has('initializationVector') && encryptionConfig.has('secretKey')) {
+        const cmdOpenExtensionSettings = commands.registerCommand(commandOpenExtensionSettings, openExtensionSettings);
         const cmdEncryptText = commands.registerCommand(commandEncryptText, encryptText);
         const cmdDecryptText = commands.registerCommand(commandDecryptText, decryptText);
 
