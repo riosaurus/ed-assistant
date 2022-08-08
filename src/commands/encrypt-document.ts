@@ -1,5 +1,5 @@
 import { URLSearchParams } from "url";
-import { commands, Uri, window } from "vscode";
+import { Uri, window } from "vscode";
 import { getEncryptionConfiguration, getOutputConfiguration, Schemes } from "../config";
 import { openPlainTextEditor } from "../editors";
 import { encrypt } from "../functions/crypto";
