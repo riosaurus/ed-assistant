@@ -4,11 +4,6 @@ export {
 } from './open-extension-settings';
 
 export {
-    default as cmdEncryptText,
-    command as encryptTextCommand,
-} from './encrypt-text';
-
-export {
     default as cmdEncryptDocument,
     command as encryptDocumentCommand,
 } from './encrypt-document';
