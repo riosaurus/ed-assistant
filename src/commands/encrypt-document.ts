@@ -4,9 +4,9 @@ import { getEncryptionConfiguration, getOutputConfiguration, Schemes } from "../
 import { openPlainTextEditor } from "../editors";
 import { encrypt } from "../functions/crypto";
 
-export const command = "ed-assistant.encryptDocument";
+export const commandEncryptDocument = "ed-assistant.encryptDocument";
 
-export default commands.registerCommand(command, async () => {
+export default async function () {
     const algorithm = getEncryptionConfiguration().get('algorithm');
     const parcelAsRequestObject = getOutputConfiguration().get('parcelAsRequestObject');
     const documentData = window.activeTextEditor?.document.getText();
@@ -26,4 +26,4 @@ export default commands.registerCommand(command, async () => {
 
         await openPlainTextEditor(uri);
     }
-});
+};
