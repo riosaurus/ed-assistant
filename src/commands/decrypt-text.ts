@@ -1,13 +1,14 @@
 import { URLSearchParams } from "url";
 import { Uri, window } from "vscode";
-import { getEncryptionConfiguration, Schemes } from "../config";
-import { openPlainTextEditor } from "../editors";
+import getEncryptionConfig from "../config/get-encryption-config";
+import { URI_CRYPTO_SCHEME } from "../config/schemes";
+import openPlainTextEditor from "../editors/open-plaintext-editor";
 import { decrypt } from "../functions/crypto";
 
 export const commandDecryptText = "ed-assistant.decryptText";
 
 export default async function () {
-    const algorithm = getEncryptionConfiguration().get('algorithm');
+    const algorithm = getEncryptionConfig().get('algorithm');
     const text = await window.showInputBox({
         title: "Text to decrypt",
         prompt: `Valid ciphertext will be ${algorithm} decypted`,
@@ -27,7 +28,7 @@ export default async function () {
                 data: encodeURIComponent(JSON.stringify(parsedJSON, null, 2))
             });
             uri = Uri.from({
-                scheme: Schemes.URI_CRYPTO_SCHEME,
+                scheme: URI_CRYPTO_SCHEME,
                 path: `${algorithm}-decrypted.json`,
                 query: queryParams.toString(),
             });
@@ -36,11 +37,11 @@ export default async function () {
                 data: encodeURIComponent(data)
             });
             uri = Uri.from({
-                scheme: Schemes.URI_CRYPTO_SCHEME,
+                scheme: URI_CRYPTO_SCHEME,
                 path: `${algorithm}-decrypted.txt`,
                 query: queryParams.toString(),
             });
         }
         await openPlainTextEditor(uri);
     }
-};
+}

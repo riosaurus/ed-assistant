@@ -1,11 +1,11 @@
 import { createCipheriv, createDecipheriv } from "crypto";
-import { getEncryptionConfiguration } from "../config";
+import getEncryptionConfig from "../config/get-encryption-config";
 
 /**
  * Encrypt the plaintext data
  */
 export function encrypt(data: string): string {
-    const config = getEncryptionConfiguration();
+    const config = getEncryptionConfig();
     const algorithm = config.get('algorithm', 'aes-128-cbc');
     const key = config.get('secretKey')!!;
     const iv = config.get('initializationVector')!!;
@@ -18,7 +18,7 @@ export function encrypt(data: string): string {
  * Decrypt the ciphertext
  */
 export function decrypt(data: string): string {
-    const config = getEncryptionConfiguration();
+    const config = getEncryptionConfig();
     const algorithm = config.get('algorithm', 'aes-128-cbc');
     const key = config.get('secretKey')!!;
     const iv = config.get('initializationVector')!!;

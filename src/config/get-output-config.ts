@@ -26,4 +26,4 @@ interface OutputConfiguration extends WorkspaceConfiguration {
 
 export default function (): OutputConfiguration {
     return workspace.getConfiguration("ed-assistant.output");
-};
+}

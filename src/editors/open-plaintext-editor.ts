@@ -1,9 +1,9 @@
 import { TextEditor, Uri, ViewColumn, window, workspace } from "vscode";
-import { getOutputConfiguration } from "../config";
+import getOutputConfig from "../config/get-output-config";
 
-async function openPlainTextEditor(uri: Uri): Promise<TextEditor | undefined> {
+export default async function (uri: Uri): Promise<TextEditor | undefined> {
     try {
-        const openToTheSide = getOutputConfiguration().get("openToTheSide");
+        const openToTheSide = getOutputConfig().get("openToTheSide");
         const textDocument = await workspace.openTextDocument(uri);
         const textEditor = await window.showTextDocument(textDocument, {
             preview: true,
@@ -15,5 +15,3 @@ async function openPlainTextEditor(uri: Uri): Promise<TextEditor | undefined> {
         return;
     }
 }
-
-export default openPlainTextEditor;

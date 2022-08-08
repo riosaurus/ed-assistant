@@ -1,4 +1,4 @@
-import { commands, ConfigurationTarget, window, workspace, WorkspaceConfiguration } from "vscode";
+import { ConfigurationTarget, workspace, WorkspaceConfiguration } from "vscode";
 
 type EncryptionConfigurationKeys = "initializationVector" | "secretKey" | "algorithm";
 
@@ -28,4 +28,4 @@ interface EncryptionConfiguration extends WorkspaceConfiguration {
 
 export default function (): EncryptionConfiguration {
     return workspace.getConfiguration("ed-assistant.encryption");
-};
+}

@@ -1,14 +1,16 @@
 import { URLSearchParams } from "url";
 import { Uri, window } from "vscode";
-import { getEncryptionConfiguration, getOutputConfiguration, Schemes } from "../config";
-import { openPlainTextEditor } from "../editors";
+import getEncryptionConfig from "../config/get-encryption-config";
+import getOutputConfig from "../config/get-output-config";
+import { URI_CRYPTO_SCHEME } from "../config/schemes";
+import openPlaintextEditor from "../editors/open-plaintext-editor";
 import { encrypt } from "../functions/crypto";
 
 export const commandEncryptText = "ed-assistant.encryptText";
 
 export default async function () {
-    const algorithm = getEncryptionConfiguration().get('algorithm');
-    const parcelAsRequestObject = getOutputConfiguration().get('parcelAsRequestObject');
+    const algorithm = getEncryptionConfig().get('algorithm');
+    const parcelAsRequestObject = getOutputConfig().get('parcelAsRequestObject');
     const text = await window.showInputBox({
         title: "Text to encrypt",
         prompt: `Valid JSON will be ${algorithm} encypted`,
@@ -34,11 +36,11 @@ export default async function () {
             data: encodeURIComponent(data),
         });
         const uri = Uri.from({
-            scheme: Schemes.URI_CRYPTO_SCHEME,
+            scheme: URI_CRYPTO_SCHEME,
             path: `${algorithm}-encrypted.${parcelAsRequestObject ? 'json' : 'txt'}`,
             query: queryParams.toString(),
         });
 
-        await openPlainTextEditor(uri);
+        await openPlaintextEditor(uri);
     }
-};
+}

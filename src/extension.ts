@@ -4,25 +4,23 @@ import encryptDocument, { commandEncryptDocument } from './commands/encrypt-docu
 import encryptSelection, { commandEncryptSelection } from './commands/encrypt-selection';
 import encryptText, { commandEncryptText } from './commands/encrypt-text';
 import openExtensionSettings, { commandOpenExtensionSettings } from './commands/open-extension-settings';
-import { getEncryptionConfiguration, Schemes } from './config';
-import { EditorProvider } from './providers';
+import getEncryptionConfig from './config/get-encryption-config';
+import EditorProvider from './providers/editor-provider';
+import { URI_CRYPTO_SCHEME } from './config/schemes';
 
 export async function activate(context: ExtensionContext) {
 
-    const encryptionConfig = getEncryptionConfiguration();
     const cmdOpenExtensionSettings = commands.registerCommand(commandOpenExtensionSettings, openExtensionSettings);
     context.subscriptions.push(cmdOpenExtensionSettings);
-
+    
+    const encryptionConfig = getEncryptionConfig();
     if (encryptionConfig.get('initializationVector')?.length && encryptionConfig.get('secretKey')?.length) {
         const cmdEncryptText = commands.registerCommand(commandEncryptText, encryptText);
         const cmdEncryptDocument = commands.registerCommand(commandEncryptDocument, encryptDocument);
         const cmdEncryptSelection = commands.registerCommand(commandEncryptSelection, encryptSelection);
         const cmdDecryptText = commands.registerCommand(commandDecryptText, decryptText);
 
-        const editorProviderDisposable = workspace.registerTextDocumentContentProvider(
-            Schemes.URI_CRYPTO_SCHEME,
-            new EditorProvider(),
-        );
+        const editorProviderDisposable = workspace.registerTextDocumentContentProvider(URI_CRYPTO_SCHEME, new EditorProvider());
     
         context.subscriptions.push(
             cmdEncryptText,

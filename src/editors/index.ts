@@ -1,1 +1,0 @@
-export { default as openPlainTextEditor } from './plaintext-editor';
