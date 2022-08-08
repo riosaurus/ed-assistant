@@ -44,12 +44,12 @@
 			},
 			{
 				"command": "ed-assistant.decryptText",
-				"title": "Decrypt",
+				"title": "Decrypt Text",
 				"category": "EDA"
 			},
 			{
 				"command": "ed-assistant.openSettings",
-				"title": "Open ED Assistant settings",
+				"title": "Open ED Assistant Settings",
 				"category": "EDA"
 			}
 		],
@@ -78,16 +78,14 @@
 		},
 		"configuration": [
 			{
-				"title": "ED Assistant",
+				"title": "EDAssistant",
 				"properties": {
 					"ed-assistant.encryption.initializationVector": {
 						"type": "string",
-						"default": "",
 						"description": "Initialization Vector to initialize cipher."
 					},
 					"ed-assistant.encryption.secretKey": {
 						"type": "string",
-						"default": "",
 						"description": "Secret key for encryption."
 					},
 					"ed-assistant.encryption.algorithm": {
@@ -102,12 +100,12 @@
 					"ed-assistant.output.openToTheSide": {
 						"type": "boolean",
 						"default": false,
-						"description": "If set to true, output will be opened in a read-only editor to the side of the active window."
+						"description": "Open the output beside the active window."
 					},
 					"ed-assistant.output.parcelAsRequestObject": {
 						"type": "boolean",
 						"default": false,
-						"description": "If set to true, output will be opened in a read-only editor to the side of the active window."
+						"description": "Parcel the encrypted result in a request object."
 					}
 				}
 			}

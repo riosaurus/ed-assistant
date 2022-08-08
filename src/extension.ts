@@ -1,4 +1,4 @@
-import { commands, ExtensionContext, window, workspace } from 'vscode';
+import { commands, ExtensionContext, window, workspace, env } from 'vscode';
 import decryptText, { commandDecryptText } from './commands/decrypt-text';
 import encryptDocument, { commandEncryptDocument } from './commands/encrypt-document';
 import encryptSelection, { commandEncryptSelection } from './commands/encrypt-selection';
@@ -10,9 +10,10 @@ import { EditorProvider } from './providers';
 export async function activate(context: ExtensionContext) {
 
     const encryptionConfig = getEncryptionConfiguration();
+    const cmdOpenExtensionSettings = commands.registerCommand(commandOpenExtensionSettings, openExtensionSettings);
+    context.subscriptions.push(cmdOpenExtensionSettings);
 
-    if (encryptionConfig.has('initializationVector') && encryptionConfig.has('secretKey')) {
-        const cmdOpenExtensionSettings = commands.registerCommand(commandOpenExtensionSettings, openExtensionSettings);
+    if (encryptionConfig.get('initializationVector')?.length && encryptionConfig.get('secretKey')?.length) {
         const cmdEncryptText = commands.registerCommand(commandEncryptText, encryptText);
         const cmdEncryptDocument = commands.registerCommand(commandEncryptDocument, encryptDocument);
         const cmdEncryptSelection = commands.registerCommand(commandEncryptSelection, encryptSelection);
@@ -24,7 +25,6 @@ export async function activate(context: ExtensionContext) {
         );
     
         context.subscriptions.push(
-            cmdOpenExtensionSettings,
             cmdEncryptText,
             cmdEncryptDocument,
             cmdEncryptSelection,
@@ -33,11 +33,11 @@ export async function activate(context: ExtensionContext) {
         );
     } else {
         const choice = await window.showWarningMessage(
-            "Please ensure both Secret Key and Initialization Vector to be set in Extension settings. Open extension settings?",
+            "Please set the secrets in Extension settings and reload the window. Open extension settings now?",
             "Open",
         );
         if (choice === "Open") {
-            await commands.executeCommand("ed-assistant.openSettings");
+            openExtensionSettings();
         }
     }
 }
