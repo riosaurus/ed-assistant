@@ -12,8 +12,3 @@ export {
     default as cmdEncryptSelection,
     command as encryptSelectionCommand,
 } from './encrypt-selection';
-
-export {
-    default as cmdDecryptText,
-    command as decryptTextCommand,
-} from './decrypt-text';

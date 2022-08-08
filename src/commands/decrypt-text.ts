@@ -1,12 +1,12 @@
 import { URLSearchParams } from "url";
-import { commands, Uri, window } from "vscode";
+import { Uri, window } from "vscode";
 import { getEncryptionConfiguration, Schemes } from "../config";
 import { openPlainTextEditor } from "../editors";
 import { decrypt } from "../functions/crypto";
 
-export const command = "ed-assistant.decryptText";
+export const commandDecryptText = "ed-assistant.decryptText";
 
-export default commands.registerCommand(command, async () => {
+export default async function () {
     const algorithm = getEncryptionConfiguration().get('algorithm');
     const text = await window.showInputBox({
         title: "Text to decrypt",
@@ -43,4 +43,4 @@ export default commands.registerCommand(command, async () => {
         }
         await openPlainTextEditor(uri);
     }
-});
+};
